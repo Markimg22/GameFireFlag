@@ -7,6 +7,7 @@ TagManager:
   - Player Blue
   - Player Red
   - PutFlag
+  - Spawn
   layers:
   - Default
   - TransparentFX

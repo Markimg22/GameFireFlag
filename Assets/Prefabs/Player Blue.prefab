@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 3748667065217280521}
   - component: {fileID: 3748667065217280527}
   - component: {fileID: 3748667065217280526}
+  - component: {fileID: 6292774906280890259}
   - component: {fileID: 3748667065217280525}
   - component: {fileID: 3748667065217280524}
+  - component: {fileID: 237965516}
   m_Layer: 9
   m_Name: Player Blue
   m_TagString: Player
@@ -131,9 +133,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0029229457, y: 0.032637134}
+  m_Offset: {x: -0.002, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.031735927
+  m_Radius: 0.03
+--- !u!70 &6292774906280890259
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748667065217280520}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0010000002, y: 0.16}
+  m_Size: {x: 0.06, y: 0.2}
+  m_Direction: 0
 --- !u!50 &3748667065217280525
 Rigidbody2D:
   serializedVersion: 4
@@ -167,6 +185,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1259a92fa6356454abfff4d695422e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &237965516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748667065217280520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0ab7d186929ad4982a5b1f1525fdbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBar: {fileID: 0}
 --- !u!1001 &25781877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,6 +219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gun Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595289860463040770, guid: 5f7e3028a0651a34891587eccef774ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7595289860463040772, guid: 5f7e3028a0651a34891587eccef774ba,
         type: 3}
