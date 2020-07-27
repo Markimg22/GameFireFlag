@@ -23,13 +23,15 @@ public class FlagController : MonoBehaviour
 
     private void Update() 
     {
-        // Can Get Flag
-        if( _canGet && Input.GetKeyDown(KeyCode.E)){
+        if( _canGet && Input.GetKeyDown(KeyCode.E))
+        {
+            // Can Get Flag
             GetFlag( _flag );
         }
 
-        // Can Put Flag
-        if( _canPut && Input.GetKeyDown(KeyCode.E) ){
+        if( _canPut && Input.GetKeyDown(KeyCode.E) )
+        {
+            // Can Put Flag
             PutFlag( _putFlag );
         }
     }
@@ -41,16 +43,18 @@ public class FlagController : MonoBehaviour
 
     private void OnTriggerStay2D( Collider2D collision )  
     {
-        if( collision.CompareTag("Player") || collision.CompareTag("PutFlag") ){
-
-            // Get Flag
-            if( !_isCaptured){
+        if( collision.CompareTag("Player") || collision.CompareTag("PutFlag") )
+        {
+            if( !_isCaptured)
+            {
+                // Get Flag
                 _canGet = true;
                 _flag = collision.gameObject;
             }
 
-            // Put Flag
-            if( _isCaptured ){
+            if( _isCaptured )
+            {
+                // Put Flag
                 _canPut = true;
                 _putFlag = collision.gameObject;
             }

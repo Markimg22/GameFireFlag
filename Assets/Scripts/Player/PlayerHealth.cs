@@ -6,12 +6,18 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private int _life = 100;
-    public RectTransform lifeBar;
+    private RectTransform _lifeBar;
 
+
+    private void Awake() 
+    {
+        _lifeBar = GameObject.Find( "Life Bar" ).GetComponent<RectTransform>();
+    }
 
     private void Update() 
     {
-        if( _life <= 0 ){
+        if( _life <= 0 )
+        {
             this.gameObject.SetActive( false );
         }
     }
@@ -20,13 +26,13 @@ public class PlayerHealth : MonoBehaviour
     {   
         // Reset Life
         _life = 100;
-        lifeBar.sizeDelta = new Vector2( 260f, lifeBar.sizeDelta.y );
+        _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
     }
 
     private void AddDamage( int damage )
     {
         this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );
-        lifeBar.sizeDelta = new Vector2( lifeBar.sizeDelta.x - 65f, lifeBar.sizeDelta.y );
+        _lifeBar.sizeDelta = new Vector2( _lifeBar.sizeDelta.x - 65f, _lifeBar.sizeDelta.y );
         _life -= damage;
     }
 

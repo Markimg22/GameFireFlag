@@ -6,9 +6,13 @@ using UnityEngine;
 public class GunShoot : MonoBehaviour
 {
     public GameObject prefabBullet;
-    private Transform _firepoint;
-
     private List<GameObject> _listBullets = new List<GameObject>();
+    private Transform _firepoint;
+    public Transform FirePoint
+    { 
+        get{ return _firepoint; } 
+        set{this._firepoint = value;} 
+    }
 
     private int _amountBullets = 5;
     private float _delayShoot = 0.5f;
@@ -16,15 +20,6 @@ public class GunShoot : MonoBehaviour
 
     private bool _canShoot = true;
 
-
-    public Transform FirePoint{
-        get{
-            return _firepoint;
-        }
-        set{
-            this._firepoint = value;
-        }
-    }
 
     private void Awake() 
     {
@@ -43,8 +38,9 @@ public class GunShoot : MonoBehaviour
 
     private void Update() 
     {
-        // Shoot
-        if( Input.GetButtonDown("Fire1") && _canShoot ){
+        if( Input.GetButtonDown("Fire1") && _canShoot )
+        {
+            // Shoot
             StartCoroutine( "Shoot" );
             StartCoroutine( "DelayShoot" );
         }
@@ -52,9 +48,9 @@ public class GunShoot : MonoBehaviour
 
     private void AddBullets()
     {
-        // Add Bullets on Gun
-        for( int i = 0; i < _amountBullets; i++ ){
-            
+        for( int i = 0; i < _amountBullets; i++ )
+        {    
+            // Add Bullets on Gun
             GameObject bullet = Instantiate( prefabBullet, _firepoint.position, Quaternion.identity, this.transform );
             bullet.SetActive( false );
 
@@ -66,10 +62,10 @@ public class GunShoot : MonoBehaviour
     {
         GameObject bullet = null;
 
-        for( int i = 0; i < _listBullets.Count; i++ ){
-
-            if( !_listBullets[i].activeSelf ){
-                
+        for( int i = 0; i < _listBullets.Count; i++ )
+        {
+            if( !_listBullets[i].activeSelf )
+            {    
                 bullet = _listBullets[i].gameObject;
                 break;
             }
@@ -85,7 +81,8 @@ public class GunShoot : MonoBehaviour
         // Disable Bullet after one time
         yield return new WaitForSeconds( _livingBullet );
         
-        if( bullet.activeSelf ){
+        if( bullet.activeSelf )
+        {
             bullet.SendMessage( "ResetBullet" );
         }
     }

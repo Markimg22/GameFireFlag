@@ -16,14 +16,16 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter2D( Collider2D collision ) 
     {
-        // Collision with Player
-        if( collision.CompareTag("Player") ){
+        if( collision.CompareTag("Player") )
+        {
+            // Collision with Player
             collision.SendMessage( "AddDamage", _damageBullet );
             ResetBullet();
         }
 
-        // Collision with other things
-        else if( collision.gameObject.layer == 0 ){
+        else if( collision.gameObject.layer == 0 )
+        {
+            // Collision with other things
             ResetBullet();
         }    
     }

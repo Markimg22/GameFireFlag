@@ -8,22 +8,16 @@ public class PlayerController : MonoBehaviour
     // Move
     private float speed = 0.8f;
     private Vector2 _direction;
+    public Vector2 Direction 
+    { 
+        get{ return _direction; } 
+        set{ this._direction = value; }  
+    }
 
     // Reference
     private Animator _animator;
     private Rigidbody2D _rigidbody;
 
-
-    // Get e Set - Direction
-    public Vector2 Direction
-    { 
-        get{ 
-            return _direction; 
-        }
-        set{ 
-            this._direction = value; 
-        } 
-    }
 
     private void Awake() 
     {
@@ -37,11 +31,13 @@ public class PlayerController : MonoBehaviour
         _direction = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") );
 
         // Flip
-        if( _direction.x > 0f ){
+        if( _direction.x > 0f )
+        {
             // right
             this.transform.localScale = new Vector2( 1f, 1f );
         }
-        else if( _direction.x < 0f ){
+        else if( _direction.x < 0f )
+        {
             // left
             this.transform.localScale = new Vector2( -1f, 1f );
         }
