@@ -25,6 +25,7 @@ public class SpawnPlayer : MonoBehaviour
      private IEnumerator RespawnPlayer()
      {
          yield return new WaitForSeconds( _delayRespawn );
+         
          _player.transform.position = this.transform.position;
          _player.SetActive( true );
      }

@@ -8,10 +8,10 @@ public class GunShoot : MonoBehaviour
     public GameObject prefabBullet;
     private List<GameObject> _listBullets = new List<GameObject>();
     private Transform _firepoint;
-    public Transform FirePoint
+    public Transform firePoint
     { 
         get{ return _firepoint; } 
-        set{this._firepoint = value;} 
+        set{ this._firepoint = value; } 
     }
 
     private int _amountBullets = 5;

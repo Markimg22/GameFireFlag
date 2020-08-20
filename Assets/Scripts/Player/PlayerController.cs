@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Move
-    private float speed = 0.8f;
+    private float _speed = 0.8f;
     private Vector2 _direction;
-    public Vector2 Direction 
+    public Vector2 direction 
     { 
         get{ return _direction; } 
         set{ this._direction = value; }  
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() 
     {
         // Move
-        _rigidbody.velocity = _direction * speed;      
+        _rigidbody.velocity = _direction * _speed;      
     }
 
     private void LateUpdate() 

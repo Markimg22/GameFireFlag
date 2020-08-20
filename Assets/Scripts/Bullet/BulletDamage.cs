@@ -21,6 +21,12 @@ public class BulletDamage : MonoBehaviour
             // Collision with Player
             collision.SendMessage( "AddDamage", _damageBullet );
             ResetBullet();
+
+            // Death Player Enemy
+            // if( !collision.gameObject.activeSelf )
+            // {
+
+            // }
         }
 
         else if( collision.gameObject.layer == 0 )
@@ -34,6 +40,6 @@ public class BulletDamage : MonoBehaviour
     {
         this.gameObject.SetActive( false );
         this.transform.parent = _gunShoot.gameObject.transform;
-        this.transform.position = _gunShoot.FirePoint.position;
+        this.transform.position = _gunShoot.firePoint.position;
     }
 }

@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if( _life <= 0 )
         {
+            // Kill this Player
             this.gameObject.SetActive( false );
         }
     }
