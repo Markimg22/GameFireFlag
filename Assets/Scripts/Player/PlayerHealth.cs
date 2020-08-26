@@ -3,38 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerHealth : MonoBehaviour
+namespace Photon.Pun
 {
-    private int _life = 100;
-    private RectTransform _lifeBar;
-
-
-    private void Awake() 
+    public class PlayerHealth : MonoBehaviour
     {
-        _lifeBar = GameObject.Find( "Life Bar" ).GetComponent<RectTransform>();
-    }
+        private int _life = 100;
+        private RectTransform _lifeBar;
 
-    private void Update() 
-    {
-        if( _life <= 0 )
+
+        private void Awake() 
         {
-            // Kill this Player
-            this.gameObject.SetActive( false );
+            _lifeBar = GameObject.Find( "Life Bar" ).GetComponent<RectTransform>();
         }
-    }
 
-    private void OnEnable() 
-    {   
-        // Reset Life
-        _life = 100;
-        _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
-    }
+        private void Update() 
+        {
+            if( _life <= 0 )
+            {
+                // Kill this Player
+                this.gameObject.SetActive( false );
+            }
+        }
 
-    private void AddDamage( int damage )
-    {
-        this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );
-        _lifeBar.sizeDelta = new Vector2( _lifeBar.sizeDelta.x - 65f, _lifeBar.sizeDelta.y );
-        _life -= damage;
-    }
+        private void OnEnable() 
+        {   
+            // Reset Life
+            _life = 100;
+            _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
+        }
 
+        private void AddDamage( int damage )
+        {
+            this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );
+            _lifeBar.sizeDelta = new Vector2( _lifeBar.sizeDelta.x - 65f, _lifeBar.sizeDelta.y );
+            _life -= damage;
+        }
+
+    }
 }

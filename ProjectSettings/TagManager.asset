@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Player Blue
-  - Player Red
   - PutFlag
   - Spawn
   layers:

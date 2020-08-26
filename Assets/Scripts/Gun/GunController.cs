@@ -2,34 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class GunController : MonoBehaviour
+namespace Photon.Pun
 {
-    private PlayerController _playerController;
-    private float _rotationZ;
-
-
-    private void Awake() 
+    public class GunController : MonoBehaviour
     {
-        _playerController = transform.GetComponentInParent<PlayerController>();
-    }
+        private PlayerController _playerController;
+        private float _rotationZ;
 
-    private void Update() 
-    {
-        // Movement
-        _rotationZ = Mathf.Atan2( _playerController.direction.y, _playerController.direction.x ) * Mathf.Rad2Deg;
 
-        if( _playerController.direction.x < 0f )
+        private void Awake() 
         {
-            _rotationZ += 180f;        
-        }
-        
-        if( (_rotationZ == 90 || _rotationZ == -90) && _playerController.transform.localScale.x == -1f  )
-        {
-            _rotationZ *= -1f;
+            _playerController = transform.GetComponentInParent<PlayerController>();
         }
 
-        this.transform.rotation = Quaternion.Euler( 0f, 0f, _rotationZ );
-    }
+        private void Update() 
+        {
+            // Movement
+            _rotationZ = Mathf.Atan2( _playerController.direction.y, _playerController.direction.x ) * Mathf.Rad2Deg;
 
+            if( _playerController.direction.x < 0f )
+            {
+                _rotationZ += 180f;        
+            }
+            
+            if( (_rotationZ == 90 || _rotationZ == -90) && _playerController.transform.localScale.x == -1f  )
+            {
+                _rotationZ *= -1f;
+            }
+
+            this.transform.rotation = Quaternion.Euler( 0f, 0f, _rotationZ );
+        }
+
+    }
 }

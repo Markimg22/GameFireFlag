@@ -3,43 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BulletDamage : MonoBehaviour
+namespace Photon.Pun
 {
-    private int _damageBullet = 25;
-    private GunShoot _gunShoot;
-
-
-    private void Awake() 
+    public class BulletDamage : MonoBehaviour
     {
-        _gunShoot = GetComponentInParent<GunShoot>();
-    }
+        private int _damageBullet = 25;
+        private GunShoot _gunShoot;
 
-    private void OnTriggerEnter2D( Collider2D collision ) 
-    {
-        if( collision.CompareTag("Player") )
+
+        private void Awake() 
         {
-            // Collision with Player
-            collision.SendMessage( "AddDamage", _damageBullet );
-            ResetBullet();
-
-            // Death Player Enemy
-            // if( !collision.gameObject.activeSelf )
-            // {
-
-            // }
+            _gunShoot = GetComponentInParent<GunShoot>();
         }
 
-        else if( collision.gameObject.layer == 0 )
+        private void OnTriggerEnter2D( Collider2D collision ) 
         {
-            // Collision with other things
-            ResetBullet();
-        }    
-    }
+            if( collision.CompareTag("Player") )
+            {
+                // Collision with Player
+                collision.SendMessage( "AddDamage", _damageBullet );
+                ResetBullet();
 
-    public void ResetBullet()
-    {
-        this.gameObject.SetActive( false );
-        this.transform.parent = _gunShoot.gameObject.transform;
-        this.transform.position = _gunShoot.firePoint.position;
+                // Death Player Enemy
+                // if( !collision.gameObject.activeSelf )
+                // {
+
+                // }
+            }
+
+            else if( collision.gameObject.layer == 0 )
+            {
+                // Collision with other things
+                ResetBullet();
+            }    
+        }
+
+        public void ResetBullet()
+        {
+            this.gameObject.SetActive( false );
+            this.transform.parent = _gunShoot.gameObject.transform;
+            this.transform.position = _gunShoot.firePoint.position;
+        }
     }
 }

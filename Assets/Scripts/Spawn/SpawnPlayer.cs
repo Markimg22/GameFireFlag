@@ -2,32 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class SpawnPlayer : MonoBehaviour
+namespace Photon.Pun
 {
-    private GameObject _player;
-    private float _delayRespawn = 3f;
-
-
-    private void Awake() 
+    public class SpawnPlayer : MonoBehaviour
     {
-        _player = GameObject.FindGameObjectWithTag( "Player" );
-    }
+        private GameObject _player;
+        private float _delayRespawn = 3f;
 
-     private void Update() 
-     {
-        if( !_player.activeSelf )
+
+        private void Awake() 
         {
-            StartCoroutine( "RespawnPlayer" );
-        }    
-     }
+            _player = GameObject.FindGameObjectWithTag( "Player" );
+        }
 
-     private IEnumerator RespawnPlayer()
-     {
-         yield return new WaitForSeconds( _delayRespawn );
-         
-         _player.transform.position = this.transform.position;
-         _player.SetActive( true );
-     }
+        private void Update() 
+        {
+            if( !_player.activeSelf )
+            {
+                StartCoroutine( "RespawnPlayer" );
+            }    
+        }
 
+        private IEnumerator RespawnPlayer()
+        {
+            yield return new WaitForSeconds( _delayRespawn );
+            
+            _player.transform.position = this.transform.position;
+            _player.SetActive( true );
+        }
+
+    }
 }

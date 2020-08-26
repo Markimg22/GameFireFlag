@@ -2,32 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class BulletController : MonoBehaviour
+namespace Photon.Pun
 {
-    private float speed = 3f;
-    private Vector2 _direction;
-
-    private Rigidbody2D _rigidbody;
-    private GunController _gun;
-    private Transform _crossHair;
-
-
-    private void Awake() 
+    public class BulletController : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody2D>();  
-        _gun = GetComponentInParent<GunController>();
-        _crossHair = this.transform.parent.Find( "Fire Point/Cross Hair" );   
-    }
+        private float speed = 3f;
+        private Vector2 _direction;
 
-    private void OnEnable() 
-    {
-        _direction = _crossHair.position - this.transform.position;
-    }
+        private Rigidbody2D _rigidbody;
+        private GunController _gun;
+        private Transform _crossHair;
 
-    private void FixedUpdate() 
-    {
-        _rigidbody.velocity = _direction.normalized * speed;
-    }
 
+        private void Awake() 
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();  
+            _gun = GetComponentInParent<GunController>();
+            _crossHair = this.transform.parent.Find( "Fire Point/Cross Hair" );   
+        }
+
+        private void OnEnable() 
+        {
+            _direction = _crossHair.position - this.transform.position;
+        }
+
+        private void FixedUpdate() 
+        {
+            _rigidbody.velocity = _direction.normalized * speed;
+        }
+
+    }
 }
