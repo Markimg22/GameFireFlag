@@ -7,9 +7,15 @@ namespace Photon.Pun
 {
     public class PlayerHealth : MonoBehaviour
     {
+        #region Private Fields
+
         private int _life = 100;
         private RectTransform _lifeBar;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -32,12 +38,23 @@ namespace Photon.Pun
             _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
         }
 
+        #endregion
+
+
+        #region Private Methods
+
+        /// <summary>
+        /// Setting to add damage.
+        /// </summary>
+        /// <param name="damage"> Amount of damage </param>
         private void AddDamage( int damage )
         {
             this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );
             _lifeBar.sizeDelta = new Vector2( _lifeBar.sizeDelta.x - 65f, _lifeBar.sizeDelta.y );
             _life -= damage;
         }
+
+        #endregion
 
     }
 }

@@ -10,16 +10,20 @@ namespace Photon.Pun
     public class PlayerController : MonoBehaviourPun, IPunObservable
     {
         public static GameObject LocalPlayerInstance;
-    
-        // Move
+
+        #region Private Fields    
+        
         private float _speed = 0.8f;
         private Vector2 _direction;
-        public Vector2 direction { get{return _direction;} set{this._direction = value;} }
+        public Vector2 Direction { get{return _direction;} set{this._direction = value;} }
 
-        // Reference
         private Animator _animator;
         private Rigidbody2D _rigidbody;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -68,10 +72,17 @@ namespace Photon.Pun
             _animator.SetFloat( "Speed", _direction.magnitude );   
         }
 
+        #endregion
+
+
+        #region IPunObservable implemantation
+
         public void OnPhotonSerializeView( PhotonStream stream, PhotonMessageInfo info )
         {
             throw new System.NotImplementedException();
         }
+
+        #endregion
     }
 }
 

@@ -9,8 +9,14 @@ namespace Photon.Pun
     [RequireComponent( typeof(InputField) )]
     public class PlayerNameInputField : MonoBehaviour
     {
+        #region Private Fields
+
         private const string _playerNamePrefKey = "PlayerName";
 
+        #endregion
+
+
+        #region Unity
 
         private void Start() 
         {
@@ -28,7 +34,16 @@ namespace Photon.Pun
 
             PhotonNetwork.NickName = defaultName;
         }
+
+        #endregion
         
+
+        #region Public Methods
+
+        /// <summary>
+        /// Set the player's name.
+        /// </summary>
+        /// <param name="value"> The player's name </param>
         public void SetPlayerName( string value )
         {
             if( string.IsNullOrEmpty(value) )
@@ -41,5 +56,7 @@ namespace Photon.Pun
 
             PlayerPrefs.SetString( _playerNamePrefKey, value );
         }
+
+        #endregion
     }
 }

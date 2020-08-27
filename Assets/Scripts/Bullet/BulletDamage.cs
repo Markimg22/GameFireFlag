@@ -7,9 +7,15 @@ namespace Photon.Pun
 {
     public class BulletDamage : MonoBehaviour
     {
+        #region Private Fields
+
         private int _damageBullet = 25;
         private GunShoot _gunShoot;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -27,7 +33,7 @@ namespace Photon.Pun
                 // Death Player Enemy
                 // if( !collision.gameObject.activeSelf )
                 // {
-
+                        
                 // }
             }
 
@@ -38,11 +44,21 @@ namespace Photon.Pun
             }    
         }
 
+        #endregion
+
+
+        #region Public Methods
+
+        /// <summary>
+        /// This method resets the Bullet settings
+        /// </summary>
         public void ResetBullet()
         {
             this.gameObject.SetActive( false );
             this.transform.parent = _gunShoot.gameObject.transform;
-            this.transform.position = _gunShoot.firePoint.position;
+            this.transform.position = _gunShoot.FirePoint.position;
         }
+
+        #endregion
     }
 }

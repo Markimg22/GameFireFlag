@@ -13,13 +13,20 @@ namespace Photon.Pun
     {
         public static GameController Instance;
 
+
+        #region Private Fields
+
         [SerializeField]
         private List<GameObject> _listPrefabsPlayer = new List<GameObject>();
 
         private GameObject _player;
         private List<GameObject> _listPlayers = new List<GameObject>();
 
-        
+        #endregion
+
+
+        #region Unity
+
         private void Start() 
         {   
             Instance = this;
@@ -30,40 +37,40 @@ namespace Photon.Pun
                 return;
             }
 
-            if( _listPrefabsPlayer == null )
-            {
-                Debug.LogError( "Please set ir up in GameObject: GameController" );
-            }
-            else
-            {   
-                if( PlayerController.LocalPlayerInstance == null )
-                {
-                    Debug.LogFormat( "We are Instantiating LocalPlayer drom {0}", SceneManagerHelper.ActiveSceneName );
-                    
-                    _player = PhotonNetwork.Instantiate( this._listPrefabsPlayer[0].name, new Vector3(0f, 0f, 0f) , Quaternion.identity );
-                }
-                else
-                {
-                    Debug.LogFormat( "Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName );
-                }
+            if( PlayerController.LocalPlayerInstance == null )
+            {         
+                // Instance player       
+                _player = PhotonNetwork.Instantiate( this._listPrefabsPlayer[0].name, new Vector3(0f, 0f, 0f) , Quaternion.identity );
             }
         }
 
-        public override void OnPlayerEnteredRoom( Player newPlayer )
-        {
-            Debug.Log( $"Player {newPlayer.NickName} entered Room" );
-            _listPlayers.Add( _player );
+        #endregion
 
+
+        #region Photon Callbacks
+
+        /// <summary>
+        /// Called when a Photon Player got connected. We need to then load a bigger scene.
+        /// </summary>
+        /// <param name="other"> Other </param>
+        public override void OnPlayerEnteredRoom( Player other )
+        {
+            _listPlayers.Add( _player );
+        }
+
+        /// <summary>
+        /// Called when a Photon Player got disconnected. We need to load a smaller scene.
+        /// </summary>
+        /// <param name="other"> Other </param>
+        public override void OnPlayerLeftRoom( Player other )
+        {
             if( PhotonNetwork.IsMasterClient )
             {
-                Debug.LogFormat( "OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient );
+                SceneManager.LoadScene( "Menus" );
             }
         }
 
-        public override void OnLeftRoom()
-        {
-            SceneManager.LoadScene( "Menus" );
-        }
+        #endregion
 
     }
 }

@@ -10,9 +10,15 @@ namespace Photon.Pun
 
     public class CameraController : MonoBehaviour
     {
+        #region Private Fields
+
         private GameObject _player;
         private CinemachineVirtualCamera _virtualCamera;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -20,6 +26,8 @@ namespace Photon.Pun
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
             _virtualCamera.Follow = _player.transform;
         }
+
+        #endregion
         
     }
 }

@@ -6,6 +6,8 @@ namespace Photon.Pun
 {
     public class FlagController : MonoBehaviour
     {
+        #region Private Fields
+
         private Animator _animator;
         private bool _isCaptured;
         private GameObject _gun;
@@ -16,6 +18,10 @@ namespace Photon.Pun
         private GameObject _flag;
         private GameObject _putFlag;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -71,6 +77,15 @@ namespace Photon.Pun
             _putFlag = null;
         }
 
+        #endregion
+
+
+        #region Get & Put Flag
+
+        /// <summary>
+        /// Perfom the player's action to capture the enemy flag
+        /// </summary>
+        /// <param name="player"> Game Object Player </param>
         private void GetFlag( GameObject player )
         {
             _isCaptured = true;
@@ -82,6 +97,11 @@ namespace Photon.Pun
             _gun.SetActive( false );
         }
 
+
+        /// <summary>
+        /// Perfom the action of the player placing the enemy flag in the right place
+        /// </summary>
+        /// <param name="putFlag"> Right place to put the flag </param>
         private void PutFlag( GameObject putFlag )
         {
             _isCaptured = false;
@@ -91,6 +111,8 @@ namespace Photon.Pun
 
             _gun.SetActive( true );
         }
+
+        #endregion
 
     }
 }

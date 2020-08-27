@@ -8,9 +8,15 @@ namespace Photon.Pun
 {
     public class FeedbackController : MonoBehaviour
     {
+        #region Private Fields
+
         private readonly string _connectionStatusMessage = "    Connection Status: ";
         private TextMeshProUGUI _textFeedBack;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -21,6 +27,8 @@ namespace Photon.Pun
         {
             _textFeedBack.text = _connectionStatusMessage + PhotonNetwork.NetworkClientState;    
         }
+
+        #endregion
 
     }
 }

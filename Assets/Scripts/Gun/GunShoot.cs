@@ -6,14 +6,12 @@ namespace Photon.Pun
 {
     public class GunShoot : MonoBehaviour
     {
+        #region Private Fields
+
         public GameObject prefabBullet;
         private List<GameObject> _listBullets = new List<GameObject>();
         private Transform _firepoint;
-        public Transform firePoint
-        { 
-            get{ return _firepoint; } 
-            set{ this._firepoint = value; } 
-        }
+        public Transform FirePoint { get{return _firepoint;} set{this._firepoint = value;} }
 
         private int _amountBullets = 5;
         private float _delayShoot = 0.5f;
@@ -21,6 +19,10 @@ namespace Photon.Pun
 
         private bool _canShoot = true;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -47,6 +49,14 @@ namespace Photon.Pun
             }
         }
 
+        #endregion
+
+
+        #region Private Methods
+
+        /// <summary>
+        /// Adds five bullets to the weapon.
+        /// </summary>
         private void AddBullets()
         {
             for( int i = 0; i < _amountBullets; i++ )
@@ -59,6 +69,9 @@ namespace Photon.Pun
             }
         }
 
+        /// <summary>
+        /// Called when player performs shooting action.
+        /// </summary>
         private IEnumerator Shoot()
         {
             GameObject bullet = null;
@@ -76,9 +89,6 @@ namespace Photon.Pun
             bullet.transform.parent = null;
             bullet.SetActive( true );  
 
-            /**
-            * Temporary
-            */
             // Disable Bullet after one time
             yield return new WaitForSeconds( _livingBullet );
             
@@ -88,11 +98,16 @@ namespace Photon.Pun
             }
         }
 
+        /// <summary>
+        /// Waiting time for each shot.
+        /// </summary>
         private IEnumerator DelayShoot()
         {
             _canShoot = false;
             yield return new WaitForSeconds( _delayShoot );
             _canShoot = true;
         }
+
+        #endregion
     }
 }

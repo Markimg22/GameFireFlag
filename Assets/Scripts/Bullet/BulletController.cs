@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Photon.Pun
 {
     public class BulletController : MonoBehaviour
     {
+        #region Private Fields
+
         private float speed = 3f;
         private Vector2 _direction;
+        
+        #endregion
+
+        
+        #region References
 
         private Rigidbody2D _rigidbody;
         private GunController _gun;
         private Transform _crossHair;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -31,5 +43,6 @@ namespace Photon.Pun
             _rigidbody.velocity = _direction.normalized * speed;
         }
 
+        #endregion
     }
 }

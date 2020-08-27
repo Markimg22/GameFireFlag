@@ -6,9 +6,15 @@ namespace Photon.Pun
 {
     public class GunController : MonoBehaviour
     {
+        #region Private Fields
+
         private PlayerController _playerController;
         private float _rotationZ;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
@@ -17,10 +23,10 @@ namespace Photon.Pun
 
         private void Update() 
         {
-            // Movement
-            _rotationZ = Mathf.Atan2( _playerController.direction.y, _playerController.direction.x ) * Mathf.Rad2Deg;
+            // Rotation gun
+            _rotationZ = Mathf.Atan2( _playerController.Direction.y, _playerController.Direction.x ) * Mathf.Rad2Deg;
 
-            if( _playerController.direction.x < 0f )
+            if( _playerController.Direction.x < 0f )
             {
                 _rotationZ += 180f;        
             }
@@ -32,6 +38,8 @@ namespace Photon.Pun
 
             this.transform.rotation = Quaternion.Euler( 0f, 0f, _rotationZ );
         }
+
+        #endregion
 
     }
 }

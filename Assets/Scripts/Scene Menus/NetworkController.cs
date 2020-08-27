@@ -10,17 +10,31 @@ namespace Photon.Pun
 
     public class NetworkController : MonoBehaviourPunCallbacks
     {
+        #region Private Fields
+
         [SerializeField] private GameObject _menuStart;
         [SerializeField] private byte _maxPlayersPerRoom = 4;
 
         private bool _isConnecting;
 
+        #endregion
+
+
+        #region Unity
 
         private void Awake() 
         {
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
+        #endregion
+
+
+        #region Public Methods
+
+        /// <summary>
+        /// Start the connection process.
+        /// </summary>
         public void Connect()
         {
             _isConnecting = true;
@@ -35,18 +49,22 @@ namespace Photon.Pun
             }
         }
 
+        #endregion
+
+
+        #region PhotonNetwork PullCallBacks
+
         public override void OnConnectedToMaster()
         {
             if( _isConnecting )
             {
-                Debug.Log( "Client is connected and could join a Room" );
                 PhotonNetwork.JoinRandomRoom();
             }
         }
 
         public override void OnJoinRandomFailed( short returnCode, string message )
         {
-            Debug.Log( "No rando room Available, so we create one" );
+            // Create Room
             PhotonNetwork.CreateRoom( null, new RoomOptions{MaxPlayers = this._maxPlayersPerRoom} );
         }
 
@@ -58,14 +76,13 @@ namespace Photon.Pun
 
         public override void OnJoinedRoom()
         {
-            Debug.Log( "Client is in a Room" );
-
             if( PhotonNetwork.CurrentRoom.PlayerCount == 1 )
             {
-                Debug.Log( "We loaded the *Room for 1*" );
                 PhotonNetwork.LoadLevel( "Main" );
             }
         }
+
+        #endregion
 
     }
 }
