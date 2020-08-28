@@ -10,7 +10,7 @@ namespace Photon.Pun
 
     public class PlayerUI : MonoBehaviour
     {
-        #region Serialize Fields
+        #region SERIALIZE FIELDS
 
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private GunShoot _gunShoot;
@@ -21,7 +21,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Start() 
         {
@@ -34,11 +34,8 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Public Methods
+        #region PUBLIC METHODS
 
-        /// <summary>
-        /// Called to open option menu at game time.
-        /// </summary>
         public void OpenOptionsGame()
         {
             _menuPause.SetActive( true );
@@ -46,9 +43,6 @@ namespace Photon.Pun
             _gunShoot.enabled = false;
         }
 
-        /// <summary>
-        /// Called to close the options menu at the time of the game.
-        /// </summary>
         public void CloseOptionsGame()
         {
             _menuPause.SetActive( false );
@@ -56,9 +50,6 @@ namespace Photon.Pun
             _gunShoot.enabled = true;
         }
 
-        /// <summary>
-        /// Added method on the button to leave the room.
-        /// </summary>
         public void ButtonExitRoom()
         {
             PhotonNetwork.LeaveRoom();

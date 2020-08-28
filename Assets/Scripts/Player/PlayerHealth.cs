@@ -7,7 +7,7 @@ namespace Photon.Pun
 {
     public class PlayerHealth : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private int _life = 100;
         private RectTransform _lifeBar;
@@ -15,7 +15,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -41,12 +41,8 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Private Methods
+        #region PRIVATE METHODS
 
-        /// <summary>
-        /// Setting to add damage.
-        /// </summary>
-        /// <param name="damage"> Amount of damage </param>
         private void AddDamage( int damage )
         {
             this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );

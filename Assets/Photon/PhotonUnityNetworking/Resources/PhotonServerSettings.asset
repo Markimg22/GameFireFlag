@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: 36e42fdb-6ef6-4b7d-a251-c0e5575d3d7c
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 
+    AppVersion: 1.0
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -37,4 +37,4 @@ MonoBehaviour:
   - DestroyRpc
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

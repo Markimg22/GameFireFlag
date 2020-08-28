@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Cinemachine;
 
 
@@ -10,7 +11,7 @@ namespace Photon.Pun
 
     public class CameraController : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private GameObject _player;
         private CinemachineVirtualCamera _virtualCamera;
@@ -18,7 +19,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {

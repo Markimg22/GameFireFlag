@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Photon.Pun
 {
     public class GunController : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private PlayerController _playerController;
         private float _rotationZ;
@@ -14,7 +15,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {

@@ -11,7 +11,7 @@ namespace Photon.Pun
     {
         public static GameObject LocalPlayerInstance;
 
-        #region Private Fields    
+        #region PRIVATE FIELDS    
         
         private float _speed = 0.8f;
         private Vector2 _direction;
@@ -23,7 +23,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -75,7 +75,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region IPunObservable implemantation
+        #region IPUNOBSERVABLE
 
         public void OnPhotonSerializeView( PhotonStream stream, PhotonMessageInfo info )
         {

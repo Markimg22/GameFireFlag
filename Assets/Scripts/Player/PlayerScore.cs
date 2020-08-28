@@ -8,7 +8,7 @@ namespace Photon.Pun
 {
     public class PlayerScore : MonoBehaviour
     {   
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private TextMeshProUGUI _textScore;
         private int _score;
@@ -16,7 +16,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -26,11 +26,8 @@ namespace Photon.Pun
         #endregion
 
         
-        #region Public Methods
+        #region PUBLIC METHODS
 
-        /// <summary>
-        /// Score Player
-        /// </summary>
         public void ToScore()
         {
             _score += 100;

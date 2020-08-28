@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Photon.Pun
 {
     public class GunShoot : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         public GameObject prefabBullet;
         private List<GameObject> _listBullets = new List<GameObject>();
@@ -22,7 +23,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -52,11 +53,8 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Private Methods
+        #region PRIVATE METHODS
 
-        /// <summary>
-        /// Adds five bullets to the weapon.
-        /// </summary>
         private void AddBullets()
         {
             for( int i = 0; i < _amountBullets; i++ )
@@ -69,9 +67,11 @@ namespace Photon.Pun
             }
         }
 
-        /// <summary>
-        /// Called when player performs shooting action.
-        /// </summary>
+        #endregion
+
+
+        #region COROUNTINES
+
         private IEnumerator Shoot()
         {
             GameObject bullet = null;
@@ -98,9 +98,6 @@ namespace Photon.Pun
             }
         }
 
-        /// <summary>
-        /// Waiting time for each shot.
-        /// </summary>
         private IEnumerator DelayShoot()
         {
             _canShoot = false;

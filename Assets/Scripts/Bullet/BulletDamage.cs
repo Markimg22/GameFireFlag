@@ -7,7 +7,7 @@ namespace Photon.Pun
 {
     public class BulletDamage : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private int _damageBullet = 25;
         private GunShoot _gunShoot;
@@ -15,7 +15,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -47,11 +47,8 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Public Methods
+        #region PUBLIC METHODS
 
-        /// <summary>
-        /// This method resets the Bullet settings
-        /// </summary>
         public void ResetBullet()
         {
             this.gameObject.SetActive( false );

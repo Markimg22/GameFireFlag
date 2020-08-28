@@ -7,15 +7,10 @@ namespace Photon.Pun
 {
     public class BulletController : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private float speed = 3f;
         private Vector2 _direction;
-        
-        #endregion
-
-        
-        #region References
 
         private Rigidbody2D _rigidbody;
         private GunController _gun;
@@ -24,7 +19,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {

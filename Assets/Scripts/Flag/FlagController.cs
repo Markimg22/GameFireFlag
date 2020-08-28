@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Photon.Pun
 {
     public class FlagController : MonoBehaviour
     {
-        #region Private Fields
+        #region PRIVATE FIELDS
 
         private Animator _animator;
         private bool _isCaptured;
@@ -21,7 +22,7 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Unity
+        #region UNITY
 
         private void Awake() 
         {
@@ -80,12 +81,8 @@ namespace Photon.Pun
         #endregion
 
 
-        #region Get & Put Flag
+        #region GET & PUT FLAG
 
-        /// <summary>
-        /// Perfom the player's action to capture the enemy flag
-        /// </summary>
-        /// <param name="player"> Game Object Player </param>
         private void GetFlag( GameObject player )
         {
             _isCaptured = true;
@@ -97,11 +94,6 @@ namespace Photon.Pun
             _gun.SetActive( false );
         }
 
-
-        /// <summary>
-        /// Perfom the action of the player placing the enemy flag in the right place
-        /// </summary>
-        /// <param name="putFlag"> Right place to put the flag </param>
         private void PutFlag( GameObject putFlag )
         {
             _isCaptured = false;
