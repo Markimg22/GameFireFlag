@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Realtime;
+
 
 namespace Photon.Pun
 {
-    #pragma warning disable 649
-
-    public class PlayerController : MonoBehaviourPun, IPunObservable
+    public class PlayerController : MonoBehaviour
     {
-        public static GameObject LocalPlayerInstance;
-
         #region PRIVATE FIELDS    
         
         private float _speed = 0.8f;
         private Vector2 _direction;
-        public Vector2 Direction { get{return _direction;} set{this._direction = value;} }
 
         private Animator _animator;
         private Rigidbody2D _rigidbody;
+        private PhotonView _photonView;
+
+        #endregion
+
+
+        # region GETT & SET
+
+        public Vector2 Direction { get{return _direction;} set{this._direction = value;} }
+        public PhotonView photonView{ get{return _photonView;} set{this._photonView = value;} }
 
         #endregion
 
@@ -29,26 +35,22 @@ namespace Photon.Pun
         {
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();   
-
-            if( photonView.IsMine )
-            {
-                LocalPlayerInstance = this.gameObject;
-            }
+            _photonView = GetComponent<PhotonView>();
 
             DontDestroyOnLoad( this.gameObject );
         }
 
         private void Update()
-        {
-            if( !photonView.IsMine && PhotonNetwork.IsConnected )
+        {   
+            if( !_photonView.IsMine )
             {
                 return;
             }
-            
-            // Move
+
+            // Get Direction
             _direction = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical") );
 
-            // Flip
+            // Flip Direction
             if( _direction.x > 0f )
             {
                 // right
@@ -70,16 +72,6 @@ namespace Photon.Pun
         private void LateUpdate() 
         {   
             _animator.SetFloat( "Speed", _direction.magnitude );   
-        }
-
-        #endregion
-
-
-        #region IPUNOBSERVABLE
-
-        public void OnPhotonSerializeView( PhotonStream stream, PhotonMessageInfo info )
-        {
-            throw new System.NotImplementedException();
         }
 
         #endregion

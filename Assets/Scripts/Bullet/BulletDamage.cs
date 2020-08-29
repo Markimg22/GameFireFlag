@@ -29,12 +29,6 @@ namespace Photon.Pun
                 // Collision with Player
                 collision.SendMessage( "AddDamage", _damageBullet );
                 ResetBullet();
-
-                // Death Player Enemy
-                // if( !collision.gameObject.activeSelf )
-                // {
-                        
-                // }
             }
 
             else if( collision.gameObject.layer == 0 )

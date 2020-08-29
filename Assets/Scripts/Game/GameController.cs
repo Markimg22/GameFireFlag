@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using TMPro;
 using Photon.Realtime;
-using Photon.Pun.UtilityScripts;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
 namespace Photon.Pun
@@ -13,16 +10,30 @@ namespace Photon.Pun
     public class GameController : MonoBehaviourPunCallbacks
     {
         public static GameController Instance = null;
-
-        public TextMeshProUGUI infoText;
         public GameObject[] playerPrefabs;
+        private GameObject _player;
 
-
+        
         #region UNITY
 
         private void Awake() 
         {
             Instance = this;    
+        }
+
+        private void Start() 
+        {
+            PhotonNetwork.Instantiate( playerPrefabs[0].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
+        }
+
+        #endregion
+
+
+        #region PUN CALLBACKS
+
+        public override void OnDisconnected( DisconnectCause cause )
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene( "Lobby" );
         }
 
         #endregion

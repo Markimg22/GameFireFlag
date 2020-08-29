@@ -10,18 +10,25 @@ namespace Photon.Pun
 
     public class PlayerUI : MonoBehaviour
     {
-        #region SERIALIZE FIELDS
+        #region PRIVATE FIELDS
 
-        [SerializeField] private PlayerController _playerController;
-        [SerializeField] private GunShoot _gunShoot;
+        [ Header("UI") ]
         [SerializeField] private TextMeshProUGUI _playerNameText;
-
         [SerializeField] private GameObject _menuPause;
+
+        private PlayerController _playerController;
+        private GunShoot _gunShoot;
 
         #endregion
 
 
         #region UNITY
+
+        private void Awake() 
+        {
+            _playerController = GetComponent<PlayerController>();
+            _gunShoot = GetComponentInChildren<GunShoot>();    
+        }
 
         private void Start() 
         {
@@ -34,16 +41,16 @@ namespace Photon.Pun
         #endregion
 
 
-        #region PUBLIC METHODS
+        #region BUTTONS METHODS
 
-        public void OpenOptionsGame()
+        public void ButtonOpenOptionsGame()
         {
             _menuPause.SetActive( true );
             _playerController.enabled = false;
             _gunShoot.enabled = false;
         }
 
-        public void CloseOptionsGame()
+        public void ButtonCloseOptionsGame()
         {
             _menuPause.SetActive( false );
             _playerController.enabled = true;
@@ -52,7 +59,7 @@ namespace Photon.Pun
 
         public void ButtonExitRoom()
         {
-            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
         }
 
         #endregion

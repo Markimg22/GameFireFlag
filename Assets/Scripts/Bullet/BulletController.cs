@@ -28,6 +28,15 @@ namespace Photon.Pun
             _crossHair = this.transform.parent.Find( "Fire Point/Cross Hair" );   
         }
 
+        private void Update() 
+        {
+            if( !_gun.gameObject.activeSelf )    
+            {
+                // If the weapon is disabled.
+                this.gameObject.SendMessage( "ResetBullet" );
+            }
+        }
+
         private void OnEnable() 
         {
             _direction = _crossHair.position - this.transform.position;

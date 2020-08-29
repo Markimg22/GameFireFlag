@@ -24,7 +24,12 @@ namespace Photon.Pun
 
         private void Update() 
         {
-            // Rotation gun
+            if( !_playerController.photonView.IsMine )
+            {
+                return;
+            }
+
+            // Rotation Gun
             _rotationZ = Mathf.Atan2( _playerController.Direction.y, _playerController.Direction.x ) * Mathf.Rad2Deg;
 
             if( _playerController.Direction.x < 0f )

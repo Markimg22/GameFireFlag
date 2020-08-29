@@ -7,18 +7,32 @@ namespace Photon.Pun
 {
     public class GunShoot : MonoBehaviour
     {
+        #region PUBLIC FIELDS
+
+        [ Header("Prefabs Bullet") ]
+        public GameObject prefabBullet;
+        public GameObject prefabBulletPhotonView;
+
+        #endregion
+
+        
         #region PRIVATE FIELDS
 
-        public GameObject prefabBullet;
         private List<GameObject> _listBullets = new List<GameObject>();
         private Transform _firepoint;
-        public Transform FirePoint { get{return _firepoint;} set{this._firepoint = value;} }
 
         private int _amountBullets = 5;
         private float _delayShoot = 0.5f;
         private float _livingBullet = 1.5f;
 
         private bool _canShoot = true;
+
+        #endregion
+
+        
+        #region GET & SET
+
+        public Transform FirePoint { get{return _firepoint;} set{this._firepoint = value;} }
 
         #endregion
 
@@ -41,7 +55,12 @@ namespace Photon.Pun
         }
 
         private void Update() 
-        {
+        {   
+            if( !GetComponentInParent<PlayerController>().photonView.IsMine )
+            {
+                return;
+            }
+
             if( Input.GetButtonDown("Fire1") && _canShoot )
             {
                 // Shoot
@@ -62,7 +81,7 @@ namespace Photon.Pun
                 // Add Bullets on Gun
                 GameObject bullet = Instantiate( prefabBullet, _firepoint.position, Quaternion.identity, this.transform );
                 bullet.SetActive( false );
-
+                
                 _listBullets.Add( bullet );
             }
         }

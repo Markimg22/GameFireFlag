@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Photon.Realtime;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -21,7 +22,7 @@ namespace Photon.Pun
         public InputField playerNameInput;
         public InputField roomNameInput;
 
-        [ Header("Text") ]
+        [ Header("Texts") ]
         public TextMeshProUGUI statusText;
 
         #endregion
@@ -29,13 +30,17 @@ namespace Photon.Pun
 
         #region UNITY
 
-        private void Start() 
+        private void Awake() 
         {
+            // PhotonNetwork.AutomaticallySyncScene = true;
+
             string randomPlayerName = "Player" + Random.Range( 1000, 10000 );
             playerNameInput.text = randomPlayerName;
+        }
 
-            loginPanel.gameObject.SetActive( true );
-            roomPanel.gameObject.SetActive( false );
+        private void Start() 
+        {
+            SetActivePanel( loginPanel.name );
         }
 
         #endregion
@@ -72,6 +77,12 @@ namespace Photon.Pun
             PhotonNetwork.JoinOrCreateRoom( roomNameInput.text, roomOptions, TypedLobby.Default );
         }
 
+        public void SetActivePanel( string activePanel )
+        {
+            loginPanel.SetActive( activePanel.Equals(loginPanel.name) );
+            roomPanel.SetActive( activePanel.Equals(roomPanel.name) );
+        }
+
         #endregion
 
 
@@ -87,8 +98,7 @@ namespace Photon.Pun
             statusText.text = "Connected to Master.";
             statusText.text = $"Server Region : {PhotonNetwork.CloudRegion} | PING : {PhotonNetwork.GetPing()}";
 
-            loginPanel.gameObject.SetActive( false );
-            roomPanel.gameObject.SetActive( true );
+            SetActivePanel( roomPanel.name );
         }
 
         public override void OnJoinedLobby()
@@ -105,11 +115,8 @@ namespace Photon.Pun
         {
             statusText.text = "Joined room";
             statusText.text = $"Room Name : {PhotonNetwork.CurrentRoom.Name} | Current Players in Room : {PhotonNetwork.CurrentRoom.PlayerCount}";
-        }
 
-        public override void OnDisconnected( DisconnectCause cause )
-        {
-            statusText.text = $"OnDisconnected : {cause}";
+            SceneManager.LoadScene( "Game" );
         }
 
         #endregion

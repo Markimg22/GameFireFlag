@@ -756,7 +756,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4527190010796325992}
         m_TargetAssemblyTypeName: Photon.Pun.PlayerUI, Assembly-CSharp
-        m_MethodName: CloseOptionsGame
+        m_MethodName: ButtonCloseOptionsGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1020,7 +1020,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4527190010796325992}
         m_TargetAssemblyTypeName: Photon.Pun.PlayerUI, Assembly-CSharp
-        m_MethodName: OpenOptionsGame
+        m_MethodName: ButtonOpenOptionsGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1251,9 +1251,9 @@ GameObject:
   - component: {fileID: -6174616844989089416}
   - component: {fileID: -4527190010796325992}
   - component: {fileID: -6643251882113863825}
-  - component: {fileID: -673873080917895671}
-  - component: {fileID: -94243247021457477}
-  - component: {fileID: 4983669344954478156}
+  - component: {fileID: 749384167457750153}
+  - component: {fileID: 7481407474228843404}
+  - component: {fileID: 494841143200567255}
   m_Layer: 9
   m_Name: Player Blue
   m_TagString: Player
@@ -1449,8 +1449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a60b63dd41eaf4e929dc81b49b89ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerController: {fileID: -6174616844989089416}
-  _gunShoot: {fileID: 2615251455962300068}
   _playerNameText: {fileID: 1543761018}
   _menuPause: {fileID: 6798990676881434676}
 --- !u!114 &-6643251882113863825
@@ -1472,14 +1470,44 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: -6174616844989089416}
-  - {fileID: -673873080917895671}
-  - {fileID: -94243247021457477}
-  - {fileID: 4983669344954478156}
+  - {fileID: 749384167457750153}
+  - {fileID: 494841143200567255}
+  - {fileID: 7481407474228843404}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-673873080917895671
+--- !u!114 &749384167457750153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748667065217280520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 1
+--- !u!114 &7481407474228843404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748667065217280520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 2.23
+--- !u!114 &494841143200567255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1495,7 +1523,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 1
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Speed
   - Type: 9
     SynchronizeType: 0
@@ -1503,37 +1531,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &-94243247021457477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748667065217280520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
---- !u!114 &4983669344954478156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3748667065217280520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &5351785983654570084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,18 +1912,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7e3028a0651a34891587eccef774ba, type: 3}
---- !u!114 &2615251455962300068 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2615251455971285201, guid: 5f7e3028a0651a34891587eccef774ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 25781877}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9353564002c0bf40b6712e31424dafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7595289860455268209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7595289860463040772, guid: 5f7e3028a0651a34891587eccef774ba,
