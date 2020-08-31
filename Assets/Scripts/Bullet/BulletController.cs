@@ -9,12 +9,19 @@ namespace Photon.Pun
     {
         #region PRIVATE FIELDS
 
-        private float speed = 3f;
-        private Vector2 _direction;
-
+        private float _bulletSpeed = 3f;
         private Rigidbody2D _rigidbody;
-        private GunController _gun;
+        private Vector2 _direction;
         private Transform _crossHair;
+
+        private float _lifeBullet = 2f;
+
+        #endregion
+
+        
+        #region GET & SET
+        
+        public Transform CrossHair{ get{return _crossHair;} set{this._crossHair = value;} }
 
         #endregion
 
@@ -23,28 +30,27 @@ namespace Photon.Pun
 
         private void Awake() 
         {
-            _rigidbody = GetComponent<Rigidbody2D>();  
-            _gun = GetComponentInParent<GunController>();
-            _crossHair = this.transform.parent.Find( "Fire Point/Cross Hair" );   
+            _rigidbody = GetComponent<Rigidbody2D>(); 
         }
 
-        private void Update() 
-        {
-            if( !_gun.gameObject.activeSelf )    
-            {
-                // If the weapon is disabled.
-                this.gameObject.SendMessage( "ResetBullet" );
-            }
-        }
-
-        private void OnEnable() 
+        private void Start() 
         {
             _direction = _crossHair.position - this.transform.position;
         }
-
+        
         private void FixedUpdate() 
         {
-            _rigidbody.velocity = _direction.normalized * speed;
+            _rigidbody.velocity = _direction.normalized * _bulletSpeed;    
+        }
+
+        #endregion
+
+
+        #region ON ENABLE
+
+        private void OnEnable() 
+        {
+            Destroy( this.gameObject, _lifeBullet );
         }
 
         #endregion

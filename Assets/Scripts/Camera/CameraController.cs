@@ -7,8 +7,6 @@ using Cinemachine;
 
 namespace Photon.Pun
 {
-    #pragma warning disable 649
-
     public class CameraController : MonoBehaviour
     {
         #region PRIVATE FIELDS
@@ -25,6 +23,15 @@ namespace Photon.Pun
         {
             _player = transform.parent.gameObject;
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        }
+
+        private void Start() 
+        {    
+            if( !_player.GetComponent<PlayerController>().photonView.IsMine )
+            {
+                return;
+            }
+
             _virtualCamera.Follow = _player.transform;
         }
 

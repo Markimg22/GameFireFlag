@@ -1,23 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using TMPro;
 
 
 namespace Photon.Pun
 {
-    #pragma warning disable 649
-
     public class PlayerUI : MonoBehaviour
     {
-        #region PRIVATE FIELDS
+        #region PUBLIC FIELDS
 
         [ Header("UI") ]
-        [SerializeField] private TextMeshProUGUI _playerNameText;
-        [SerializeField] private GameObject _menuPause;
+        public TextMeshProUGUI playerNameText;
+        public GameObject menuPause;
+
+        #endregion
+
+
+        #region PRIVATE FIELDS
 
         private PlayerController _playerController;
-        private GunShoot _gunShoot;
+        private PlayerShooting _playerShoot;
 
         #endregion
 
@@ -27,14 +31,14 @@ namespace Photon.Pun
         private void Awake() 
         {
             _playerController = GetComponent<PlayerController>();
-            _gunShoot = GetComponentInChildren<GunShoot>();    
+            _playerShoot = GetComponentInChildren<PlayerShooting>();    
         }
 
         private void Start() 
         {
-            if( _playerNameText != null )    
+            if( playerNameText != null )    
             {
-                _playerNameText.text = _playerController.photonView.Owner.NickName;
+                playerNameText.text = _playerController.photonView.Owner.NickName;
             }
         }
 
@@ -45,16 +49,16 @@ namespace Photon.Pun
 
         public void ButtonOpenOptionsGame()
         {
-            _menuPause.SetActive( true );
+            menuPause.SetActive( true );
             _playerController.enabled = false;
-            _gunShoot.enabled = false;
+            _playerShoot.enabled = false;
         }
 
         public void ButtonCloseOptionsGame()
         {
-            _menuPause.SetActive( false );
+            menuPause.SetActive( false );
             _playerController.enabled = true;
-            _gunShoot.enabled = true;
+            _playerShoot.enabled = true;
         }
 
         public void ButtonExitRoom()

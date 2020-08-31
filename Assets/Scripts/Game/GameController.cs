@@ -10,6 +10,7 @@ namespace Photon.Pun
     public class GameController : MonoBehaviourPunCallbacks
     {
         public static GameController Instance = null;
+
         public GameObject[] playerPrefabs;
         private GameObject _player;
 

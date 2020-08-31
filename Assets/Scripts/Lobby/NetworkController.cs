@@ -114,8 +114,6 @@ namespace Photon.Pun
         public override void OnJoinedRoom()
         {
             statusText.text = "Joined room";
-            statusText.text = $"Room Name : {PhotonNetwork.CurrentRoom.Name} | Current Players in Room : {PhotonNetwork.CurrentRoom.PlayerCount}";
-
             SceneManager.LoadScene( "Game" );
         }
 

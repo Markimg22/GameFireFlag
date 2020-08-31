@@ -10,17 +10,11 @@ namespace Photon.Pun
         #region PRIVATE FIELDS
 
         private int _damageBullet = 25;
-        private GunShoot _gunShoot;
 
         #endregion
 
 
-        #region UNITY
-
-        private void Awake() 
-        {
-            _gunShoot = GetComponentInParent<GunShoot>();
-        }
+        #region UNITY COLLISION
 
         private void OnTriggerEnter2D( Collider2D collision ) 
         {
@@ -28,28 +22,11 @@ namespace Photon.Pun
             {
                 // Collision with Player
                 collision.SendMessage( "AddDamage", _damageBullet );
-                ResetBullet();
-            }
-
-            else if( collision.gameObject.layer == 0 )
-            {
-                // Collision with other things
-                ResetBullet();
+                Destroy( this.gameObject );
             }    
         }
 
         #endregion
 
-
-        #region PUBLIC METHODS
-
-        public void ResetBullet()
-        {
-            this.gameObject.SetActive( false );
-            this.transform.parent = _gunShoot.gameObject.transform;
-            this.transform.position = _gunShoot.FirePoint.position;
-        }
-
-        #endregion
     }
 }
