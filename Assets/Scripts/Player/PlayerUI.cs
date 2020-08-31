@@ -36,9 +36,14 @@ namespace Photon.Pun
 
         private void Start() 
         {
-            if( playerNameText != null )    
+            if( _playerController.photonView.IsMine )
             {
-                playerNameText.text = _playerController.photonView.Owner.NickName;
+                // Set nick name
+                if( playerNameText != null )    
+                {
+                    playerNameText.text = _playerController.photonView.Owner.NickName;
+                }
+
             }
         }
 

@@ -18,7 +18,7 @@ namespace Photon.Pun
 
         private void OnTriggerEnter2D( Collider2D collision ) 
         {
-            if( collision.CompareTag("Player") )
+            if( collision.CompareTag("Player") && collision.GetComponent<PlayerController>().photonView.IsMine )
             {
                 // Collision with Player
                 collision.SendMessage( "AddDamage", _damageBullet );

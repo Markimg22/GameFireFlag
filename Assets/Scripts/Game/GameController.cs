@@ -12,7 +12,6 @@ namespace Photon.Pun
         public static GameController Instance = null;
 
         public GameObject[] playerPrefabs;
-        private GameObject _player;
 
         
         #region UNITY
@@ -24,7 +23,7 @@ namespace Photon.Pun
 
         private void Start() 
         {
-            PhotonNetwork.Instantiate( playerPrefabs[0].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
+            PhotonNetwork.Instantiate( playerPrefabs[1].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
         }
 
         #endregion

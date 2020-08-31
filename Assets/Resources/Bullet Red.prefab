@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7466973582710701849}
   - component: {fileID: 7466973582710701845}
   - component: {fileID: 7466973582710701846}
-  - component: {fileID: -4437137606985991521}
-  - component: {fileID: 8048789873612953274}
-  - component: {fileID: 6738346761323012858}
-  m_Layer: 8
+  - component: {fileID: 7770102916085112506}
+  - component: {fileID: 5742254891729568547}
+  - component: {fileID: 1649915838946415751}
+  m_Layer: 9
   m_Name: Bullet Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,8 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817c09cd89b4ac84597820239b5cb3b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: Red
---- !u!114 &-4437137606985991521
+--- !u!114 &7770102916085112506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7605092a43492704e8de497f0d1b9642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8048789873612953274
+--- !u!114 &5742254891729568547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,11 +169,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 6738346761323012858}
+  - {fileID: 1649915838946415751}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6738346761323012858
+--- !u!114 &1649915838946415751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,9 +182,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7466973582710701850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3

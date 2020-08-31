@@ -56,6 +56,7 @@ namespace Photon.Pun
                 return;
             }
             
+            // Set nick name
             PhotonNetwork.NickName = playerNameInput.text;
             PhotonNetwork.ConnectUsingSettings();
         }
