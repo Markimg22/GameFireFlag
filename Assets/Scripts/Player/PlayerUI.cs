@@ -43,7 +43,6 @@ namespace Photon.Pun
                 {
                     playerNameText.text = _playerController.photonView.Owner.NickName;
                 }
-
             }
         }
 

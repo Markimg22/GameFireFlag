@@ -21,12 +21,12 @@ namespace Photon.Pun
 
         private void Awake() 
         {
-            _player = transform.parent.gameObject;
+            _player = GameObject.FindGameObjectWithTag( "Player" );
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         }
 
         private void Start() 
-        {    
+        {   
             if( !_player.GetComponent<PlayerController>().photonView.IsMine )
             {
                 return;

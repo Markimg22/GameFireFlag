@@ -25,6 +25,9 @@ namespace Photon.Pun
         [ Header("Texts") ]
         public TextMeshProUGUI statusText;
 
+        [ Header("Prefabs Player") ]
+        public GameObject[] listPrefabsPlayer;
+
         #endregion
 
 
@@ -32,8 +35,7 @@ namespace Photon.Pun
 
         private void Awake() 
         {
-            // PhotonNetwork.AutomaticallySyncScene = true;
-
+            // Random nick name
             string randomPlayerName = "Player" + Random.Range( 1000, 10000 );
             playerNameInput.text = randomPlayerName;
         }
@@ -73,7 +75,7 @@ namespace Photon.Pun
                 statusText.text = "Room name is empty.";
                 return;
             }
-
+            
             RoomOptions roomOptions = new RoomOptions(){ MaxPlayers = 4 };
             PhotonNetwork.JoinOrCreateRoom( roomNameInput.text, roomOptions, TypedLobby.Default );
         }
@@ -116,9 +118,11 @@ namespace Photon.Pun
         {
             statusText.text = "Joined room";
             SceneManager.LoadScene( "Game" );
+
+            // Spawn Player
+            PhotonNetwork.Instantiate( listPrefabsPlayer[PhotonNetwork.CurrentRoom.PlayerCount - 1].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
         }
 
         #endregion
-
     }
 }

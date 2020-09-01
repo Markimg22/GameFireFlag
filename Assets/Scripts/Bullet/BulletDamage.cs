@@ -21,7 +21,7 @@ namespace Photon.Pun
             if( collision.CompareTag("Player") && collision.GetComponent<PlayerController>().photonView.IsMine )
             {
                 // Collision with Player
-                collision.SendMessage( "AddDamage", _damageBullet );
+                collision.GetComponent<PlayerHealth>().TakeDamage( _damageBullet );
                 Destroy( this.gameObject );
             }    
         }

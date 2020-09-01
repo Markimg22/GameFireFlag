@@ -9,9 +9,11 @@ namespace Photon.Pun
 {
     public class GameController : MonoBehaviourPunCallbacks
     {
+        #region PUBLIC FIELDS
+
         public static GameController Instance = null;
 
-        public GameObject[] playerPrefabs;
+        #endregion
 
         
         #region UNITY
@@ -19,11 +21,6 @@ namespace Photon.Pun
         private void Awake() 
         {
             Instance = this;    
-        }
-
-        private void Start() 
-        {
-            PhotonNetwork.Instantiate( playerPrefabs[1].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
         }
 
         #endregion

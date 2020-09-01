@@ -20,8 +20,15 @@ namespace Photon.Pun
 
         private void Awake() 
         {
-            _lifeBar = GameObject.Find( "Life Bar" ).GetComponent<RectTransform>();
+            _lifeBar = transform.Find( "Canvas/Menu HUD/Life Bar" ).GetComponent<RectTransform>();
             _playerController = GetComponent<PlayerController>();
+        }
+
+        private void Start() 
+        {   
+            // Reset Life
+            _life = 100;
+            _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
         }
 
         private void Update() 
@@ -29,29 +36,27 @@ namespace Photon.Pun
             if( _life <= 0 )
             {
                 // Kill this Player
-                this.gameObject.SetActive( false );
+                Destroy( this.gameObject );
             }
-        }
-
-        private void OnEnable() 
-        {   
-            // Reset Life
-            _life = 100;
-            _lifeBar.sizeDelta = new Vector2( 260f, _lifeBar.sizeDelta.y );
         }
 
         #endregion
 
 
-        #region METHODS
+        #region HEALTH
 
-        public void AddDamage( int damage )
+        public void TakeDamage( int damage )
         {
-            _playerController.photonView.RPC( "AddDamageNetwork", RpcTarget.AllBuffered, damage );
+            _playerController.photonView.RPC( "TakeDamageNetwork", RpcTarget.AllBuffered, damage );
         }
 
         [ PunRPC ]
-        private void AddDamageNetwork( int damage )
+        private void TakeDamageNetwork( int damage )
+        {
+            HealthManager( damage );
+        }
+
+        private void HealthManager( int damage )
         {
             this.gameObject.GetComponent<Animator>().SetTrigger( "Damage" );
             _lifeBar.sizeDelta = new Vector2( _lifeBar.sizeDelta.x - 65f, _lifeBar.sizeDelta.y );
