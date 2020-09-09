@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
+using UnityEngine.UI;
 
 
 namespace Photon.Pun
@@ -17,6 +18,11 @@ namespace Photon.Pun
         [ Header("UI") ]
         public TextMeshProUGUI playerNameText;
         public GameObject menuPause;
+
+        [ Header("Bullet Count") ]
+        public TextMeshProUGUI bulletCountText;
+        public Image bulletImage;
+        public Sprite bulletSprite;
 
         #endregion
 
@@ -53,7 +59,16 @@ namespace Photon.Pun
                 // Set Camera in Canvas
                 canvas.renderMode = RenderMode.ScreenSpaceCamera;
                 canvas.worldCamera = _camera;
+
+                // Set bullet Image
+                bulletImage.sprite = bulletSprite;
             }
+        }
+
+        private void Update() 
+        {
+            // Set Count Bullet
+            bulletCountText.text = _playerShoot.ListBullets.Count.ToString();    
         }
 
         #endregion

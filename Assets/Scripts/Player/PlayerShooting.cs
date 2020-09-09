@@ -32,6 +32,13 @@ namespace Photon.Pun
         #endregion
 
 
+        #region GET & SET
+
+        public List<GameObject> ListBullets{ get{return _listBullets;} set{this._listBullets = value;} }
+
+        #endregion
+
+
         #region UNITY
 
         private void Awake() 
@@ -89,6 +96,7 @@ namespace Photon.Pun
             bullet.GetComponent<BulletController>().CrossHair = _firePoint.Find( "Cross Hair" );
 
             // Active Bullet
+            _listBullets.Remove( bullet );
             bullet.transform.parent = null;
             bullet.SetActive( true );
 
@@ -114,6 +122,7 @@ namespace Photon.Pun
         {
             yield return new WaitForSeconds( 2f );
 
+            _listBullets.Add( bullet );
             bullet.SetActive( false );
             bullet.transform.position = _firePoint.position;
             bullet.transform.parent = _firePoint.parent;

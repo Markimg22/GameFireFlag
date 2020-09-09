@@ -2824,9 +2824,6 @@ MonoBehaviour:
   playerNameInput: {fileID: 1057098222}
   roomNameInput: {fileID: 1305964141}
   statusText: {fileID: 1309701067}
-  listPrefabsPlayer:
-  - {fileID: 3748667065217280520, guid: ecdc26d4d17f409458b36ba14c9ec7fa, type: 3}
-  - {fileID: 3748667065217280520, guid: 7f5c5d1abba1e4f499dc78b6bf3b6822, type: 3}
 --- !u!1 &2052691882
 GameObject:
   m_ObjectHideFlags: 0
