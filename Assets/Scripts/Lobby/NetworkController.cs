@@ -25,9 +25,6 @@ namespace Photon.Pun
         [ Header("Texts") ]
         public TextMeshProUGUI statusText;
 
-        [ Header("Prefabs Player") ]
-        public GameObject[] listPrefabsPlayer;
-
         #endregion
 
 
@@ -118,9 +115,6 @@ namespace Photon.Pun
         {
             statusText.text = "Joined room";
             SceneManager.LoadScene( "Game" );
-
-            // Spawn Player
-            PhotonNetwork.Instantiate( listPrefabsPlayer[PhotonNetwork.CurrentRoom.PlayerCount - 1].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );
         }
 
         #endregion

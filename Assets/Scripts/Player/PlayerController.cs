@@ -11,7 +11,7 @@ namespace Photon.Pun
     {
         #region PRIVATE FIELDS    
         
-        private float _speed = 0.8f;
+        private float _speed = 1.3f;
         private Vector2 _direction;
 
         private Animator _animator;
@@ -54,12 +54,12 @@ namespace Photon.Pun
             if( _direction.x > 0f )
             {
                 // right
-                this.transform.localScale = new Vector2( 1f, 1f );
+                this.transform.rotation = Quaternion.Euler( 0f, 0f, 0f );
             }
             else if( _direction.x < 0f )
             {
                 // left
-                this.transform.localScale = new Vector2( -1f, 1f );
+                this.transform.rotation = Quaternion.Euler( 0f, 180f, 0f );
             }
         }
 

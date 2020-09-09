@@ -21,17 +21,27 @@ namespace Photon.Pun
 
         private void Awake() 
         {
-            _player = GameObject.FindGameObjectWithTag( "Player" );
             _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         }
 
         private void Start() 
         {   
+            // Get Player
+            _player = GameObject.FindGameObjectWithTag( "Player" );
+
+            if( _player == null )
+            {
+                Debug.Log( "Player não encontrado" );
+                return;
+            }
+
+            // PhotonView is Mine?
             if( !_player.GetComponent<PlayerController>().photonView.IsMine )
             {
                 return;
             }
 
+            // Following Player
             _virtualCamera.Follow = _player.transform;
         }
 

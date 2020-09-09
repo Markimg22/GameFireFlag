@@ -49,7 +49,7 @@ Canvas:
   m_GameObject: {fileID: 18329027}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1293,6 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a60b63dd41eaf4e929dc81b49b89ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 18329031}
   playerNameText: {fileID: 538780321297374023}
   menuPause: {fileID: 6798990676881434676}
 --- !u!114 &-6643251882113863825
@@ -1446,8 +1447,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3011998755624892326, guid: 3c0e54830714ce44a953e71c9de9d70d,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1455,7 +1455,7 @@ SpriteRenderer:
   m_Size: {x: 0.11, y: 0.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3965003736660498558
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 1699413344017359419}
   - component: {fileID: 4259342487187843929}
   m_Layer: 8
-  m_Name: Gun Red
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,6 +12,9 @@ namespace Photon.Pun
         #region PUBLIC FIELDS
 
         public static GameController Instance = null;
+        
+        [ Header("Prefabs Player") ]
+        public GameObject[] listPrefabsPlayer;
 
         #endregion
 
@@ -21,6 +24,12 @@ namespace Photon.Pun
         private void Awake() 
         {
             Instance = this;    
+        }
+
+        private void Start() 
+        {
+            // Spawn Player
+            PhotonNetwork.Instantiate( listPrefabsPlayer[PhotonNetwork.CurrentRoom.PlayerCount - 1].name, new Vector3(0f, 0f, 0f), Quaternion.identity, 0 );    
         }
 
         #endregion

@@ -90,7 +90,7 @@ namespace Photon.Pun
 
             this.transform.parent = player.transform;
 
-            _gun = player.GetComponentInChildren<GunController>().gameObject;
+            _gun = player.transform.Find( "Gun" ).gameObject;
             _gun.SetActive( false );
         }
 

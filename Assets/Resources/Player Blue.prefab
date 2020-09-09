@@ -49,7 +49,7 @@ Canvas:
   m_GameObject: {fileID: 18329027}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+  m_Color: {r: 0, g: 0.06282759, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1071,9 +1071,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6452091406317485869}
   - component: {fileID: 7624784090286812571}
-  - component: {fileID: 7088372121110341043}
   m_Layer: 9
-  m_Name: Gun Blue
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,18 +1145,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7088372121110341043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3578795921419240209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411b3a37403471346b58af325e6ada97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3748667065217280520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a60b63dd41eaf4e929dc81b49b89ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 18329031}
   playerNameText: {fileID: 1348715765290263507}
   menuPause: {fileID: 6798990676881434676}
 --- !u!114 &-6643251882113863825
@@ -1867,8 +1855,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3011998755624892326, guid: 3c0e54830714ce44a953e71c9de9d70d,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1876,6 +1863,6 @@ SpriteRenderer:
   m_Size: {x: 0.11, y: 0.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

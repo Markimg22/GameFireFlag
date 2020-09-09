@@ -9,12 +9,10 @@ namespace Photon.Pun
     {
         #region PRIVATE FIELDS
 
-        private float _bulletSpeed = 3f;
+        private float _bulletSpeed = 4f;
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
         private Transform _crossHair;
-
-        private float _lifeBullet = 2f;
 
         #endregion
 
@@ -26,6 +24,25 @@ namespace Photon.Pun
         #endregion
 
 
+        #region OnEnable & OnDisable
+
+        private void OnEnable() 
+        {
+            // Direction
+            if( _crossHair != null )
+            {
+                _direction = _crossHair.position - this.transform.position;
+            }
+        }
+
+        private void OnDisable() 
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
+
+        #endregion
+
+
         #region UNITY
 
         private void Awake() 
@@ -33,24 +50,10 @@ namespace Photon.Pun
             _rigidbody = GetComponent<Rigidbody2D>(); 
         }
 
-        private void Start() 
-        {
-            _direction = _crossHair.position - this.transform.position;
-        }
-        
         private void FixedUpdate() 
         {
+            // Move
             _rigidbody.velocity = _direction.normalized * _bulletSpeed;    
-        }
-
-        #endregion
-
-
-        #region ON ENABLE
-
-        private void OnEnable() 
-        {
-            Destroy( this.gameObject, _lifeBullet );
         }
 
         #endregion

@@ -11,6 +11,9 @@ namespace Photon.Pun
     {
         #region PUBLIC FIELDS
 
+        [ Header( "CANVAS" ) ]
+        public Canvas canvas;
+
         [ Header("UI") ]
         public TextMeshProUGUI playerNameText;
         public GameObject menuPause;
@@ -23,6 +26,8 @@ namespace Photon.Pun
         private PlayerController _playerController;
         private PlayerShooting _playerShoot;
 
+        private Camera _camera;
+
         #endregion
 
 
@@ -32,6 +37,7 @@ namespace Photon.Pun
         {
             _playerController = GetComponent<PlayerController>();
             _playerShoot = GetComponentInChildren<PlayerShooting>();    
+            _camera = GameObject.FindGameObjectWithTag( "MainCamera" ).GetComponent<Camera>();
         }
 
         private void Start() 
@@ -43,6 +49,10 @@ namespace Photon.Pun
                 {
                     playerNameText.text = _playerController.photonView.Owner.NickName;
                 }
+
+                // Set Camera in Canvas
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = _camera;
             }
         }
 
