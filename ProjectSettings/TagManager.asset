@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PutFlag
   - Spawn
+  - Bullet
   layers:
   - Default
   - TransparentFX
