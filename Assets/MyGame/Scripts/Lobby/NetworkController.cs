@@ -6,12 +6,8 @@ using Photon.Realtime;
 
 
 public class NetworkController : MonoBehaviourPunCallbacks
-{
+{  
+  public override void OnConnectedToMaster() {
 
-
-    
-    public override void OnConnectedToMaster()
-    {
-
-    }
+  }
 }
